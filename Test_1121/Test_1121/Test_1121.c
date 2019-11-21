@@ -2,40 +2,22 @@
 #include  <stdio.h>
 #include <stdlib.h>
 
-int Fibonacci(int n) {
-	 int result=0;
-	 int a1 = 1;
-	 int a2 = 1;
-	 if (n < 3) {
-	    return 1;
-	    }
-	else {
-		for (int i = 3; i <= n; i++) {
-			result = a1 + a2;
-			a1 = a2;
-			a2 = result;
+int math(int n, int k) {
+		if (k == 1) {
+			return n;
 		}
-		return result;
-	}
-}
-
-int Fibonacci1(int n) {
-	int buf = 0;
-	if (n < 3) {
-		return 1;
-	}
-	else {
-		return Fibonacci1(n - 1) + Fibonacci1(n - 2);
-	}
-
+		else {
+			n = n * math(n, k - 1);
+		}
 }
 
 int main() {
-	int n;
-	printf("请输入一个数：\n");
-	scanf("%d", &n);
-	printf("非递归第%d项为：%d\n",n, Fibonacci(n));
-	printf("递归第%d项为：%d\n", n, Fibonacci1(n));
+	int  n;
+	int  k;
+	printf("请输入底数n和指数k\n");
+	scanf("%d%d",&n,&k);
+	math(n, k);
+	printf("结果为：%d\n", math(n, k));
     system ("pause");
     return 0;
 }
