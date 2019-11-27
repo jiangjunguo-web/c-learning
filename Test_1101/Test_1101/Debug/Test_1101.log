@@ -1,0 +1,4 @@
+﻿  test_1101.c
+e:\vs test\test_1101\test_1101\test_1101.c(10): warning C4554: “&”: 检查运算符优先级可能存在的错误；使用圆括号阐明优先级
+e:\vs test\test_1101\test_1101\test_1101.c(10): warning C4554: “|”: 检查运算符优先级可能存在的错误；使用圆括号阐明优先级
+  Test_1101.vcxproj -> E:\VS TEST\Test_1101\Debug\Test_1101.exe
