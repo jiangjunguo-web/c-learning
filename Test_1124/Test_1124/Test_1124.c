@@ -73,7 +73,7 @@ int main() {
 			int j;
 			Answer(answer);
 			printf("请输入你猜得答案：\n");
-			for (j = 1; j <= 8; j++) {
+			for (j = 1; j <= 6; j++) {
 				printf("第%d次：\n", j);
 				for (int i = 0; i < 4; i++)
 				{
@@ -84,8 +84,8 @@ int main() {
 					break;
 				}
 			}
-			if (j>8) {
-			printf("你已经输错了8次！正确答案为：\n");
+			if (j>6) {
+			printf("你已经输错了6次！正确答案为：\n");
 			for (int i = 0; i < 4; i++) {
 				printf("%d ", answer[i]);
 			}
