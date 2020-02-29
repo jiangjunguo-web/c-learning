@@ -1,0 +1,6 @@
+﻿  homework.c
+e:\git\c-learning\homework\homework\homework.c(989): warning C4047: “函数”:“int *”与“int [3][3]”的间接级别不同
+e:\git\c-learning\homework\homework\homework.c(989): warning C4024: “longestIncreasingPath”: 形参和实参 1 的类型不同
+e:\git\c-learning\homework\homework\homework.c(780): warning C4715: “paixu”: 不是所有的控件路径都返回值
+e:\git\c-learning\homework\homework\homework.c(983): warning C4716: “longestIncreasingPath”: 必须返回一个值
+  homework.vcxproj -> E:\GIT\c-learning\homework\Debug\homework.exe
