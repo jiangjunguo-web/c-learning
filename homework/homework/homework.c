@@ -421,11 +421,7 @@ int ThirdMax(int str[],int len) {
 	}
 }
 
-int f(int n)
-{
-	if (n) return f(n - 1) + n;
-	else return n;
-}
+
 
 //找和为目标数的两个元素的下标
 void TwoSum(int str[], int sum, int len) {
@@ -780,19 +776,19 @@ int paixu(int a, int b, int c, int d, int e) {
 }
 
 //查找函数 
-int FindPath(int* str,int row,int col,int rowlen,int collen) {
+int FindPath(int str[3][3],int row,int col,int rowlen,int collen) {
 	int count = 1;
 	int flag = 1;
 	while (flag) {
 		if (row == 0) {
 			//[0][0]点
 			if (col == 0) {
-				int temp=paixu(*str+row*3+col,*str+row*3+col+1,*str+(row+1)*3+col,0,0);
-				if (temp == *str+row*3+col+1) {
+				int temp = paixu(str[row][col], str[row][col + 1], str[row+1][col], 0, 0);
+				if (temp == str[row][col+1]) {
 					count++;
 					col = col + 1;
 				}
-				else if (temp == *str+(row+1)*3+col) {
+				else if (temp == str[row+1][col]) {
 					count++;
 					row = row + 1;
 				}
@@ -802,12 +798,12 @@ int FindPath(int* str,int row,int col,int rowlen,int collen) {
 			} 
 			//[0][collen]
 			else if (col == collen) {
-				int temp = paixu(*str+row*3+col, *str+row*3+col-1, *str+(row+1)*3+col, 0, 0);
-				if (temp == *str+row*3+col-1) {
+				int temp = paixu(str[row][col], str[row][col - 1], str[row+1][col], 0, 0);
+				if (temp == str[row][col-1]) {
 					count++;
 					col = col - 1;
 				}
-				else if (temp == *str + (row + 1) * 3 + col) {
+				else if (temp == str[row+1][col]) {
 					count++;
 					row = row + 1;
 				}
@@ -817,16 +813,16 @@ int FindPath(int* str,int row,int col,int rowlen,int collen) {
 			}
 			//第一行其他点
 			else {
-				int temp = paixu(*str + row * 3 + col, *str + row * 3 + col - 1, *str + (row + 1) * 3 + col, *str + row * 3 + col + 1, 0);
-				if (temp == *str + row * 3 + col - 1) {
+				int temp = paixu(str[row][col], str[row][col - 1], str[row + 1][col], str[row][col+1], 0);
+				if (temp == str[row][col-1]) {
 					count++;
 					col = col - 1;
 				}
-				else if (temp == *str + (row + 1) * 3 + col) {
+				else if (temp == str[row+1][col]) {
 					count++;
 					row = row + 1;
 				}
-				else if (temp == *str + row * 3 + col + 1) {
+				else if (temp == str[row][col+1]) {
 					count++;
 					col = col + 1;
 				}
@@ -838,12 +834,12 @@ int FindPath(int* str,int row,int col,int rowlen,int collen) {
 		else if(col==0){
 			//[rowlen][0]点
 			if (row == rowlen) {
-				int temp = paixu(*str + row * 3 + col, *str + row * 3 + col + 1, *str + (row-1) * 3 + col, 0, 0);
-				if (temp == *str + row * 3 + col + 1) {
+				int temp = paixu(str[row][col], str[row][col + 1], str[row-1][col], 0, 0);
+				if (temp == str[row][col+1]) {
 					count++;
 					col = col + 1;
 				}
-				else if (temp == *str + (row - 1) * 3 + col) {
+				else if (temp == str[row-1][col]) {
 					count++;
 					row = row - 1;
 				}
@@ -853,16 +849,16 @@ int FindPath(int* str,int row,int col,int rowlen,int collen) {
 			}
 			//第一列其他点
 			else {
-				int temp = paixu(*str + row * 3 + col, *str + row * 3 + col + 1, *str + (row - 1) * 3 + col, *str + (row + 1) * 3 + col, 0);
-				if (temp == *str + row * 3 + col+1) {
+				int temp = paixu(str[row][col], str[row][col + 1], str[row - 1][col], str[row+1][col] , 0);
+				if (temp == str[row][col+1]) {
 					count++;
 					col = col + 1;
 				}
-				else if (temp == *str + (row - 1) * 3 + col) {
+				else if (temp == str[row-1][col]) {
 					count++;
 					row = row - 1;
 				}
-				else if (temp == *str + (row + 1) * 3 + col) {
+				else if (temp == str[row+1][col]) {
 					count++;
 					row = row + 1;
 				}
@@ -874,12 +870,12 @@ int FindPath(int* str,int row,int col,int rowlen,int collen) {
 		else if (row == rowlen) {
 		//[rowlen][collen]点
 			if (col == collen) {
-				int temp = paixu(*str + row * 3 + col, *str + row * 3 + col - 1, *str + (row-1) * 3 + col, 0, 0);
-				if (temp == *str + row * 3 + col - 1) {
+				int temp = paixu(str[row][col], str[row][col - 1], str[row-1][col], 0, 0);
+				if (temp == str[row][col-1]) {
 					count++;
 					col = col - 1;
 				}
-				else if (temp == *str + (row - 1) * 3 + col) {
+				else if (temp == str[row-1][col]) {
 					count++;
 					row = row - 1;
 				}
@@ -889,16 +885,16 @@ int FindPath(int* str,int row,int col,int rowlen,int collen) {
 			}
 		//最后一行其他点
 			else {
-				int temp = paixu(*str + row * 3 + col, *str + row * 3 + col - 1, *str + (row - 1) * 3 + col, *str + row * 3 + col + 1, 0);
-				if (temp == *str + row * 3 + col - 1) {
+				int temp = paixu(str[row][col], str[row][col - 1], str[row - 1][col], str[row][col+1], 0);
+				if (temp == str[row][col-1]) {
 					count++;
 					col = col - 1;
 				}
-				else if (temp == *str + (row - 1) * 3 + col) {
+				else if (temp == str[row-1][col]) {
 					count++;
 					row = row - 1;
 				}
-				else if (temp == *str + row * 3 + col + 1) {
+				else if (temp == str[row][col+1]) {
 					count++;
 					col = col + 1;
 				}
@@ -909,16 +905,16 @@ int FindPath(int* str,int row,int col,int rowlen,int collen) {
 		}
 		else if (col == collen) {
 		//最后一列的点
-			int temp = paixu(*str + row * 3 + col, *str + (row + 1) * 3 + col, *str + (row - 1) * 3 + col, *str + row * 3 + col - 1, 0);
-			if (temp == *str + (row + 1) * 3 + col) {
+			int temp = paixu(str[row][col], str[row + 1][col], str[row - 1][col], str[row][col-1], 0);
+			if (temp == str[row+1][col]) {
 				count++;
 				row = row + 1;
 			}
-			else if (temp == *str + (row - 1) * 3 + col) {
+			else if (temp == str[row-1][col]) {
 				count++;
 				row = row - 1;
 			}
-			else if (temp == *str + row * 3 + col - 1) {
+			else if (temp == str[row][col-1]) {
 				count++;
 				col = col - 1;
 			}
@@ -928,20 +924,20 @@ int FindPath(int* str,int row,int col,int rowlen,int collen) {
 		}
 		else {
 		//不在边缘的点
-			int temp = paixu(*str + row * 3 + col, *str + (row + 1) * 3 + col, *str + (row - 1) * 3 + col, *str + row * 3 + col - 1, *str + row * 3 + col + 1);
-			if (temp == *str + (row + 1) * 3 + col) {
+			int temp = paixu(str[row][col], str[row + 1][col], str[row - 1][col], str[row][col - 1], str[row][col+1]);
+			if (temp == str[row+1][col]) {
 				count++;
 				row = row + 1;
 			}
-			else if (temp == *str + (row - 1) * 3 + col) {
+			else if (temp == str[row-1][col]) {
 				count++;
 				row = row - 1;
 			}
-			else if (temp == *str + row * 3 + col - 1) {
+			else if (temp == str[row][col-1]) {
 				count++;
 				col = col - 1;
 			}
-			else if (temp == *str + row * 3 + col + 1) {
+			else if (temp == str[row][col+1]) {
 				count++;
 				col = col + 1;
 			}
@@ -954,39 +950,96 @@ int FindPath(int* str,int row,int col,int rowlen,int collen) {
 }
 
 //最大递增路径长度
-int longestIncreasingPath(int* str,int rowlen,int collen) {
+int longestIncreasingPath(int str[3][3],int rowlen,int collen) {
 	int lentharr[9] = {0};
 	int x = 0;
 	int i = 0;
-	for (int j = 0; j < 3; j++) {
-		for (int k = 0; k < 3; k++) {
-			printf("%d ", *str + i * 3 + k);
+	for (int row = 0; row < rowlen; row++) {
+		for (int col = 0; col < collen; col++) {
+			lentharr[i]=FindPath(str, row, col, rowlen, collen);
+			i++;
 		}
 	}
-	//for (int row = 0; row < rowlen; row++) {
-	//	for (int col = 0; col < collen; col++) {
-	//		lentharr[i]=FindPath(str, row, col, rowlen, collen);
-	//		i++;
-	//	}
-	//}
-	//for (int k = 0; k < 8; k++) {
-	//	if (lentharr[k]>=lentharr[k + 1]) {
-	//		x = lentharr[k];
-	//		lentharr[k] = lentharr[k + 1];
-	//		lentharr[k + 1] = x;
-	//	}
-	//}
-	//for (int i = 0; i < 9; i++) {
-	//	printf("%d", lentharr[i]);
-	//}
-	//return lentharr[8];
+	for (int k = 0; k < 8; k++) {
+		if (lentharr[k]>=lentharr[k + 1]) {
+			x = lentharr[k];
+			lentharr[k] = lentharr[k + 1];
+			lentharr[k + 1] = x;
+		}
+	}
+	return lentharr[8];
+}
+
+//二叉树右侧节点
+void RightSideView(int str[], int len) {
+	int arr1[10];
+	int arr2[10];
+	int j = 0;
+	for (int i = 1; i < 11; i++) {
+		arr1[i-1] = (int)(pow(2, i)-2);
+	}
+	int k;
+	for (k = 0; k < 10; k++) {
+		if (arr1[k] >= len) {
+			break;
+		}
+		else {
+			while (str[arr1[k]] == NULL) {
+				arr1[k]--;
+			}
+			arr2[j] = str[arr1[k]];
+			j++;
+		}
+	}
+	for (int p = len-1; p > arr1[k - 1]; p--) {
+		if (str[p] == NULL) {
+			continue;
+		}
+		else {
+			arr2[j] = str[p];
+			j++;
+			break;
+		}
+	}
+	arr2[j] = -1;
+	int q = 0;
+	while (arr2[q] != -1) {
+		printf("%d", arr2[q]);
+		q++;
+	}
+}
+
+//查找元素
+void FindOne(int route[2][3], int s, int str[10]) {
+	int a = 0;
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 3; j++) {
+			if (route[i][j] == s) {
+				str[a] = i;
+				a++;
+			}
+		}
+	}
+}
+//公交路线
+int NumbBus(int route[2][3], int s, int t) {
+	int row = 2;
+	int col = 3;
+	int star[10] = { -1 };
+	int gone[2][3] = { 0 };
+	for (int j = 0; star[j] > -1 ; j++) {
+		FindOne(route, s, star);
+		for (int i = 0; i < 3; i++) {
+
+		}
+	}
+		
 }
 int main() {
-	int str[3][3] = { { 3, 4, 5 },
-					  { 3, 2, 6 },
-					  { 2, 2, 1 }
-					};
-	printf("%d", longestIncreasingPath(str,3,3));
+	int route[2][3] = { { 1, 2, 7 },
+						{ 3, 6, 7 } };
+
+
 	system("pause");
 	return 0;
 }
