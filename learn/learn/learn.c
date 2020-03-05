@@ -2,12 +2,13 @@
 #include <stdlib.h>
 
 int main() {
-	int name;
-	for (name = 'A'; name <= 'D'; name++) {
-		if ((name != 'A') + (name == 'C') + (name == 'D') + (name != 'D') == 3) {
-			printf("%c",name);
-		}
-	}
+	char *c[] = { "ENTER", "NEW", "POINT", "FIRST" };
+	char**cp[] = { c + 3, c + 2, c + 1, c };
+	char***cpp = cp;
+	printf("%s\n", **++cpp);
+	printf("%s\n", *--*++cpp + 3);
+	printf("%s\n", *cpp[-2] + 3);
+	printf("%s\n", cpp[-1][-1] + 1);
 	system("pause");
 	return 0;
 }
