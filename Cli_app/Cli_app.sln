@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cli_app", "Cli_app\Cli_app.vcxproj", "{F6B9B13F-7E60-40B5-B808-D045460062EC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SerAPP", "..\SerAPP\SerAPP\SerAPP.vcxproj", "{78D17C1B-DDA0-4A8A-8087-E6BE8C27F8F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6B9B13F-7E60-40B5-B808-D045460062EC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F6B9B13F-7E60-40B5-B808-D045460062EC}.Debug|Win32.Build.0 = Debug|Win32
+		{F6B9B13F-7E60-40B5-B808-D045460062EC}.Release|Win32.ActiveCfg = Release|Win32
+		{F6B9B13F-7E60-40B5-B808-D045460062EC}.Release|Win32.Build.0 = Release|Win32
+		{78D17C1B-DDA0-4A8A-8087-E6BE8C27F8F2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{78D17C1B-DDA0-4A8A-8087-E6BE8C27F8F2}.Debug|Win32.Build.0 = Debug|Win32
+		{78D17C1B-DDA0-4A8A-8087-E6BE8C27F8F2}.Release|Win32.ActiveCfg = Release|Win32
+		{78D17C1B-DDA0-4A8A-8087-E6BE8C27F8F2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

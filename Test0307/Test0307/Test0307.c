@@ -28,12 +28,12 @@ char* Strcpy(char* str, char* arr) {
 	}
 	else {
 		char* begin = str;
-		while (*arr != 0) {
+		while (*arr != '\0') {
 			*str = *arr;
 			str++;
 			arr++;
 		}
-		*str = 0;
+		*str = '\0';
 		return begin;
 	}
 }
@@ -54,9 +54,11 @@ int Strlen(char* str) {
 }
 int main() { 
 	char str1[200] = "haha";
+	
 	char str2[200] = "heheheuiheii";
-	printf("%d\n", Strlen(str1));
-	printf("%d\n", Strlen(str2));
+
+	Strcpy(str1, str2);
+	puts(str1);
 	system("pause");
 	return 0;
 }
