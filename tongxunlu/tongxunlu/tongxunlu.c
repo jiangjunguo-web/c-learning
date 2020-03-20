@@ -14,13 +14,18 @@ typedef struct people {
 }information;
 
 typedef struct mindan {
-	information everyone[1000];
+	int num ;
+	information* everyone;
 	int size;
+	
 }mindan;
 
+//初始化
 void Init(mindan* book) {
 	book->size = 0;
-	for (int i = 0; i < MAX_LEN; i++) {
+	book->num = 20;
+	book->everyone = (information*)malloc(book->num*sizeof(information));
+	for (int i = 0; i < book->num; i++) {
 		strcpy(book->everyone[i].name," ");
 		strcpy(book->everyone[i].sex, " ");
 		strcpy(book->everyone[i].number, " ");
@@ -29,6 +34,7 @@ void Init(mindan* book) {
 	}
 }
 
+//界面设置
 int meau() {
 	printf("*********t通讯录**********\n");
 	printf("0、退出设置\n");
@@ -44,10 +50,13 @@ int meau() {
 	return chioce;
 }
 
+//添加联系人
 void AddInformation(mindan* book) {
 	if (book->size >= MAX_LEN) {
-		printf("存储已满，无法添加！\n");
-		return;
+		book->num += 20;
+		information* newper = (information*)malloc(book->num*sizeof(information));
+		memcpy(newper, book->everyone, book->size*sizeof(information));
+		free(book->everyone);
 	}
 	printf("请输入联系人姓名：\n");
 	information* p_num =&( book->everyone[book->size]);
@@ -60,11 +69,12 @@ void AddInformation(mindan* book) {
 	scanf("%s", p_num->number);
 	printf("请输入联系人年龄：\n");
 	scanf("%d",&p_num->age);
-	book->size++;
 	printf("添加联系人成功！\n");
+	book->size++;
 
 }
 
+//删除联系人
 void DelInformation(mindan* book) {
 	if (book->size == 0) {
 		printf("无联系人！\n");
@@ -90,6 +100,7 @@ void DelInformation(mindan* book) {
 	}
 }
 
+//查找联系人
 void FindInformation(mindan* book) {
 	if (book->size == 0) {
 		printf("无联系人！\n");
@@ -119,6 +130,7 @@ void FindInformation(mindan* book) {
 	}
 }
 
+//修改信息
 void ReInformation(mindan* book) {
 	if (book->size == 0) {
 		printf("无联系人！\n");
@@ -158,6 +170,7 @@ void ReInformation(mindan* book) {
 	printf("修改完成！\n");
 }
 
+//打印信息
 void PrintInformation(mindan* book) {
 	if (book->size == 0) {
 		printf("无联系人！\n");
@@ -173,6 +186,7 @@ void PrintInformation(mindan* book) {
 	}
 }
 
+//清空信息
 void DisInformation(mindan* book) {
 	if (book->size == 0) {
 		printf("无联系人！\n");
@@ -190,6 +204,7 @@ void DisInformation(mindan* book) {
 	}
 }
 
+//联系人排序
 void SortInformation(mindan* book) {
 	if (book->size == 0) {
 		printf("无联系人！\n");
@@ -208,10 +223,13 @@ void SortInformation(mindan* book) {
 	printf("排序完成！\n");
 }
 
-
 int main() {
+
 	mindan person_info;
+	
+	
 	Init(&person_info);
+
 	//定义函数指针func 代表void(*) （mindan*）
 	typedef void(*func)(mindan*);
 	func fun_table[] = {
