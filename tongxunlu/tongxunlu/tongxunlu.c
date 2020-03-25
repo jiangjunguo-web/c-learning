@@ -20,6 +20,44 @@ typedef struct mindan {
 	
 }mindan;
 
+//将数据写入文件
+void WriteFile(mindan* book) {
+	FILE* fp = fopen("test.txt", "w");
+	if (fp == NULL) {
+		perror("文件打开失败!\n");
+		return;
+	}
+	for (int i = 0; i < book->size; i++) {
+		fwrite(&(book->everyone[i]),sizeof(information),1,fp);
+	}
+	fclose(fp);
+}
+
+void LoadFile(mindan* book) {
+	FILE* fp = fopen("test.txt", "r");
+	if (fp == NULL) {
+		perror("文件打开失败!\n");
+		return;
+	}
+	information temp = { 0 };
+	int n;
+	while (1) {
+		n = fread(&temp, sizeof(information), 1, fp);
+		if (n < 1) {
+			break;
+		}
+		book->everyone[book->size] = temp;
+		book->size++;
+		if (book->size > book->num) {
+			book->num += 20;
+			information* newper = (information*)malloc(book->num*sizeof(information));
+			memcpy(newper, book->everyone, book->size*sizeof(information));
+			free(book->everyone);
+		}
+	}
+		
+}
+
 //初始化
 void Init(mindan* book) {
 	book->size = 0;
@@ -32,6 +70,7 @@ void Init(mindan* book) {
 		strcpy(book->everyone[i].address, " ");
 		book->everyone[i].age = 0;
 	}
+	
 }
 
 //界面设置
@@ -71,7 +110,7 @@ void AddInformation(mindan* book) {
 	scanf("%d",&p_num->age);
 	printf("添加联系人成功！\n");
 	book->size++;
-
+	
 }
 
 //删除联系人
@@ -224,12 +263,9 @@ void SortInformation(mindan* book) {
 }
 
 int main() {
-
 	mindan person_info;
-	
-	
 	Init(&person_info);
-
+	LoadFile(&person_info);
 	//定义函数指针func 代表void(*) （mindan*）
 	typedef void(*func)(mindan*);
 	func fun_table[] = {
@@ -250,6 +286,7 @@ int main() {
 		}
 		if (choose == 0) {
 			printf("再见\n");
+			WriteFile(&person_info);
 			break;
 		}
 		else {
