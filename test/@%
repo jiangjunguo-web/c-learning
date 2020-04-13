@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+typedef int HeapData;
+
+typedef  struct Heap {
+	HeapData* _array;
+	int size;
+	int capacity;
+}Heap;
+
+void Swap(HeapData* arr,int change1,int change2) {
+	*(arr + change1) ^= *(arr + change2) ;
+	*(arr + change2) ^= *(arr + change1) ;
+	*(arr + change1) ^= *(arr + change2) ;
+}
+
+void shiftDown(HeapData* arr ,int size,int parent) {
+	int child = parent * 2 + 1;
+	while (child < size) {
+		if(child + 1 < size && arr[child + 1] < arr[child] ) {
+			++child;
+		}
+		if(arr[child] < arr[parent]) {
+			Swap(arr,child,parent);
+			parent = child;	
+			child = 2 * parent + 1;
+		}
+		else 
+			break;
+	}
+
+}
+
+void heapCreat(Heap* h,HeapData* arr,int size) {
+	h->_array = (HeapData*) malloc (sizeof(HeapData) * size);
+	h->size = size;
+	h->capacity = size;
+	memmove(hL);
+	int parent = (size - 2) / 2;
+	while(parrent >= 0) {
+		shiftDown(h->_array,size,parent); 
+		parent--;
+	}
+}
+
+void printHeap(Heap* h) {
+	int i = 0 ;
+	while(h->size > i) {
+ 		printf("%d " , h->arr[i]);
+		i++;
+	}
+}
+
+int mian() {
+L}
