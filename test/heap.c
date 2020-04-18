@@ -66,6 +66,16 @@ void heapPop(Heap* h,HeapData x) {
 	shiftUp(h->_array,h->size-1) ;
 } 
 
+void heapPush(Heap* h) {
+	if(h == NULL) {
+		return ;
+	}
+	Swap(h->_array,0,h->size - 1);
+	h->size--;
+	shiftDown(h->_array,h->size,0);
+}
+
+
 void printHeap(Heap* h) {
 	int i = 0 ;
 	while(h->size > i) {
@@ -82,6 +92,12 @@ int main() {
 	heapCreat(&h,arr,len) ;
 	printHeap(&h);
 	heapPop(&h,1);
+	printHeap(&h);
+	heapPush(&h);
+	printHeap(&h);
+	heapPush(&h);
+	printHeap(&h);
+	heapPush(&h);
 	printHeap(&h);
 	return 0;
 }
