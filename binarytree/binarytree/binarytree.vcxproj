@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C9DA71F0-4B42-45C3-9944-495A3A456D2F}</ProjectGuid>
-    <RootNamespace>sort</RootNamespace>
+    <ProjectGuid>{6EF078B6-E299-4C4E-A91F-2485FA2E4862}</ProjectGuid>
+    <RootNamespace>binarytree</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -64,7 +64,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="sort.c" />
+    <ClCompile Include="binarytree.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
